@@ -1,0 +1,26 @@
+So I got Ollama running on RV2 with acceleration on the 4 cores. It now runs fast and usable. 
+
+
+# 🧠 Spacemit Ollama Toolkit (RV2) – Quick Install Guide
+
+# 1. Add the GPG key
+curl -fsSL https://archive.spacemit.com/bianbu/bianbu-archive-keyring.gpg \
+  | sudo tee /usr/share/keyrings/bianbu-archive-keyring.gpg > /dev/null
+
+# 2. Add the Bianbu repositories
+sudo tee /etc/apt/sources.list.d/bianbu.list > /dev/null <<EOF
+deb [signed-by=/usr/share/keyrings/bianbu-archive-keyring.gpg] https://archive.spacemit.com/bianbu/ noble-porting/snapshots/v2.1 main universe multiverse restricted
+deb [signed-by=/usr/share/keyrings/bianbu-archive-keyring.gpg] https://archive.spacemit.com/bianbu/ bianbu-v2.2-updates main universe multiverse restricted
+EOF
+
+# 3. Update the package list
+sudo apt update
+
+# 4. Install the toolkit
+sudo apt install spacemit-ollama-toolkit
+
+# 5. Confirm the toolkit is installed
+apt show spacemit-ollama-toolkit
+
+# 6. (Optional) List installed files
+dpkg -L spacemit-ollama-toolkit
